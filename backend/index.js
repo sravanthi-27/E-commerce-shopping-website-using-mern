@@ -13,7 +13,10 @@ app.use(express.json());
 app.use(cors());
 
 require("dotenv").config();  // Add this at the top for hiding username and password of mongodb
-const uri = process.env.MONGODB_URI;
+
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log("✅ Connected to MongoDB"))
+  .catch(err => console.error("❌ Connection error:", err));
 
 
 
